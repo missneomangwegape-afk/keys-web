@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keys - Experience the World Through Exchange</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    :root {
+        --primary-dark: #2C3E50;
+        --accent-rust: #D4886C;
+        --accent-sage: #8B9D83;
+        --warm-cream: #F5F1E8;
+        --soft-taupe: #E8DCC8;
+        --text-dark: #1A1A1A;
+        --text-light: #6B6B6B;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        color: var(--text-dark);
+        background: var(--warm-cream);
+        overflow-x: hidden;
+    }
+
+    /* Navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(245, 241, 232, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1.5rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(212, 136, 108, 0.2);
+        animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--primary-dark);
+        letter-spacing: 1px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 3rem;
+        list-style: none;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-rust);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+        margin-top: 80px;
+        height: 85vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0 5%;
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--soft-taupe) 0%, var(--warm-cream) 100%);
+    }
+
+    .hero-content {
+        max-width: 600px;
+        z-index: 2;
+        animation: fadeInUp 1s ease-out 0.3s backwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hero h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 5rem;
+        font-weight: 300;
+        line-height: 1.1;
+        color: var(--primary-dark);
+        margin-bottom: 1.5rem;
+        letter-spacing: -1px;
+    }
+
+    .hero h1 strong {
+        font-weight: 600;
+        color: var(--accent-rust);
+    }
+
+    .hero p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: var(--text-light);
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: var(--accent-rust);
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 1px;
+        border-radius: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(212, 136, 108, 0.3);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(212, 136, 108, 0.4);
+        background: #c27759;
+    }
+
+    /* Decorative Elements */
+    .hero-circle {
+        position: absolute;
+        right: -100px;
+        top: 10%;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(139, 157, 131, 0.15) 0%, transparent 70%);
+        animation: float 20s ease-in-out infinite;
+    }
+
+    .hero-circle-2 {
+        position: absolute;
+        right: 15%;
+        bottom: -150px;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(212, 136, 108, 0.1) 0%, transparent 70%);
+        animation: float 15s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-30px) scale(1.05);
+        }
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+        padding: 8rem 5%;
+        background: white;
+        position: relative;
+    }
+
+    .section-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3.5rem;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: var(--text-light);
+        font-size: 1.1rem;
+        margin-bottom: 5rem;
+        font-weight: 300;
+    }
+
+    .steps-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .step {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 20px;
+        transition: transform 0.3s ease;
+        animation: fadeInUp 0.8s ease-out backwards;
+    }
+
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(2) { animation-delay: 0.2s; }
+    .step:nth-child(3) { animation-delay: 0.3s; }
+
+    .step:hover {
+        transform: translateY(-10px);
+    }
+
+    .step-number {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 4rem;
+        font-weight: 300;
+        color: var(--accent-rust);
+        opacity: 0.3;
+        margin-bottom: 1rem;
+    }
+
+    .step h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--primary-dark);
+    }
+
+    .step p {
+        color: var(--text-light);
+        line-height: 1.8;
+        font-weight: 300;
+    }
+
+    /* Features Section */
+    .features {
+        padding: 8rem 5%;
+        background: var(--warm-cream);
+        position: relative;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: center;
+    }
+
+    .feature-image {
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(135deg, var(--accent-sage) 0%, var(--accent-rust) 100%);
+        border-radius: 30px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-image::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .feature-list {
+        list-style: none;
+    }
+
+    .feature-list li {
+        margin-bottom: 2.5rem;
+        padding-left: 3rem;
+        position: relative;
+        animation: fadeInUp 0.8s ease-out backwards;
+    }
+
+    .feature-list li:nth-child(1) { animation-delay: 0.2s; }
+    .feature-list li:nth-child(2) { animation-delay: 0.3s; }
+    .feature-list li:nth-child(3) { animation-delay: 0.4s; }
+    .feature-list li:nth-child(4) { animation-delay: 0.5s; }
+
+    .feature-list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        font-size: 1.5rem;
+        color: var(--accent-rust);
+        font-weight: 600;
+    }
+
+    .feature-list h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--primary-dark);
+    }
+
+    .feature-list p {
+        color: var(--text-light);
+        line-height: 1.8;
+        font-weight: 300;
+    }
+
+    /* Testimonial Section */
+    .testimonial {
+        padding: 8rem 5%;
+        background: var(--primary-dark);
+        color: white;
+        text-align: center;
+    }
+
+    .testimonial-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .quote {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        font-style: italic;
+        opacity: 0.95;
+    }
+
+    .testimonial-author {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: var(--accent-rust);
+    }
+
+    /* CTA Section */
+    .cta-section {
+        padding: 8rem 5%;
+        background: linear-gradient(135deg, var(--accent-sage) 0%, var(--accent-rust) 100%);
+        text-align: center;
+        color: white;
+    }
+
+    .cta-section h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 4rem;
+        font-weight: 300;
+        margin-bottom: 2rem;
+    }
+
+    .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        opacity: 0.95;
+        font-weight: 300;
+    }
+
+    .cta-button-alt {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: white;
+        color: var(--primary-dark);
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 1px;
+        border-radius: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button-alt:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    footer {
+        background: var(--primary-dark);
+        color: rgba(255, 255, 255, 0.7);
+        padding: 4rem 5% 2rem;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+    }
+
+    .footer-section h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+    }
+
+    .footer-section a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s ease;
+        font-weight: 300;
+    }
+
+    .footer-section a:hover {
+        color: var(--accent-rust);
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        font-weight: 300;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .nav-links {
+            gap: 1.5rem;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <nav>
+        <div class="logo">Keys</div>
+        <ul class="nav-links">
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+```
+<section class="hero">
+    <div class="hero-circle"></div>
+    <div class="hero-circle-2"></div>
+    <div class="hero-content">
+        <h1>Discover the world through <strong>home exchange</strong></h1>
+        <p>Experience authentic travel by swapping homes with fellow adventurers. No hotels, no rentals—just genuine connections and unforgettable stays around the globe.</p>
+        <a href="#" class="cta-button">START YOUR JOURNEY</a>
+    </div>
+</section>
+
+<section class="how-it-works" id="how">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">Three simple steps to your next adventure</p>
+    <div class="steps-container">
+        <div class="step">
+            <div class="step-number">01</div>
+            <h3>List Your Home</h3>
+            <p>Create a profile showcasing your unique space. Share what makes your home special and where you dream of traveling next.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">02</div>
+            <h3>Connect & Match</h3>
+            <p>Browse homes worldwide and connect with hosts whose destinations align with your travel plans. Build trust through our verified community.</p>
+        </div>
+        <div class="step">
+            <div class="step-number">03</div>
+            <h3>Exchange & Explore</h3>
+            <p>Coordinate your dates, swap keys, and embark on your adventure. Experience destinations like a local, not a tourist.</p>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="features-grid">
+        <div class="feature-image"></div>
+        <ul class="feature-list">
+            <li>
+                <h4>Verified Community</h4>
+                <p>Every member is carefully vetted with verified profiles, reviews, and secure identity checks for your peace of mind.</p>
+            </li>
+            <li>
+                <h4>Flexible Exchanges</h4>
+                <p>From simultaneous swaps to non-reciprocal arrangements, we offer exchange models that fit your travel style.</p>
+            </li>
+            <li>
+                <h4>Global Network</h4>
+                <p>Access thousands of beautiful homes across 150+ countries, from urban apartments to countryside retreats.</p>
+            </li>
+            <li>
+                <h4>Protection & Support</h4>
+                <p>Travel confidently with our comprehensive insurance coverage and 24/7 customer support team.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<section class="testimonial">
+    <div class="testimonial-content">
+        <p class="quote">"Keys transformed how we travel. We've stayed in a Parisian apartment, a Tokyo townhouse, and a Tuscan villa—all while sharing our Brooklyn home with wonderful people from around the world."</p>
+        <p class="testimonial-author">— Sarah & James, Brooklyn</p>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Ready to Exchange?</h2>
+    <p>Join thousands of travelers experiencing the world through authentic home exchanges.</p>
+    <a href="#" class="cta-button-alt">CREATE YOUR FREE ACCOUNT</a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Keys</h4>
+            <p>Connecting homes and hearts across the globe since 2024.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Safety & Trust</a></li>
+                <li><a href="#">Insurance</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Community Guidelines</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Keys. All rights reserved.</p>
+    </div>
+</footer>
+```
+
+</body>
+</html>
